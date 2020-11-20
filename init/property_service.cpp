@@ -918,13 +918,17 @@ static const char *snet_prop_value[] = {
 };
 
 static void workaround_snet_properties() {
-	std::string error;
-	LOG(INFO) << "snet: Hiding sensitive props";
+    std::string build_type = android::base::GetProperty("ro.build.type", "");
 
-	// Hide all sensitive props
-	for (int i = 0; snet_prop_key[i]; ++i) {
-		PropertySet(snet_prop_key[i], snet_prop_value[i], &error);
-	}
+    std::string error;
+
+	// Hide all sensitive props if not eng build
+    if (build_type != "eng") {
+	    LOG(INFO) << "snet: Hiding sensitive props";
+	    for (int i = 0; snet_prop_key[i]; ++i) {
+            PropertySet(snet_prop_key[i], snet_prop_value[i], &error);
+	    }
+    }
 }
 
 // If the ro.product.[brand|device|manufacturer|model|name] properties have not been explicitly
