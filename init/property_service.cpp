@@ -936,6 +936,13 @@ static const char *snet_prop_value[] = {
 static void workaround_snet_properties() {
     std::string build_type = android::base::GetProperty("ro.build.type", "");
 
+    // Bail out if this is recovery, fastbootd, or anything other than a normal boot.
+    // fastbootd, in particular, needs the real values so it can allow flashing on
+    // unlocked bootloaders.
+    if (IsRecoveryMode()) {
+        return;
+    }
+
     std::string error;
 
     // Hide all sensitive props if not eng build
