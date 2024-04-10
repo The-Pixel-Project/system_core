@@ -895,6 +895,7 @@ static const char *snet_prop_key[] = {
     "ro.build.keys",
     "ro.build.tags",
     "ro.system.build.tags",
+    "ro.oem_unlock_supported",
     "ro.vendor.boot.warranty_bit",
     "ro.vendor.warranty_bit",
     "vendor.boot.vbmeta.device_state",
@@ -923,6 +924,7 @@ static const char *snet_prop_value[] = {
     "release-keys", // ro.build.keys
     "release-keys", // ro.build.tags
     "release-keys", // ro.system.build.tags
+    "0", // ro.oem_unlock_supported
     "0", // ro.vendor.boot.warranty_bit
     "0", // ro.vendor.warranty_bit
     "locked", // vendor.boot.vbmeta.device_state
