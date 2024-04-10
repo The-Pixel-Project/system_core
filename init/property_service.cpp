@@ -953,14 +953,14 @@ static void workaround_snet_properties() {
     // Hide all sensitive props 
     LOG(INFO) << "snet: Hiding sensitive props";
     for (int i = 0; snet_prop_key[i]; ++i) {
-        PropertySet(snet_prop_key[i], snet_prop_value[i], &error);
+        InitPropertySet(snet_prop_key[i], snet_prop_value[i]);
     }
 
     // Extra pops
     std::string build_flavor_key = "ro.build.flavor";
     std::string build_flavor_value = android::base::GetProperty(build_flavor_key, "");
     build_flavor_value = android::base::StringReplace(build_flavor_value, "userdebug", "user", false);
-    PropertySet(build_flavor_key, build_flavor_value, &error);
+    InitPropertySet(build_flavor_key, build_flavor_value);
 }
 
 // If the ro.product.[brand|device|manufacturer|model|name] properties have not been explicitly
