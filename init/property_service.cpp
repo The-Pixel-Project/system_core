@@ -943,14 +943,17 @@ static void workaround_snet_properties() {
         return;
     }
 
+    // Exit if eng build
+    if (build_type == "eng") {
+        return;
+    }
+
     std::string error;
 
-    // Hide all sensitive props if not eng build
-    if (build_type != "eng") {
-        LOG(INFO) << "snet: Hiding sensitive props";
-        for (int i = 0; snet_prop_key[i]; ++i) {
-            PropertySet(snet_prop_key[i], snet_prop_value[i], &error);
-        }
+    // Hide all sensitive props 
+    LOG(INFO) << "snet: Hiding sensitive props";
+    for (int i = 0; snet_prop_key[i]; ++i) {
+        PropertySet(snet_prop_key[i], snet_prop_value[i], &error);
     }
 
     // Extra pops
