@@ -1493,6 +1493,8 @@ static void SetSafetyNetProps() {
     InitPropertySet("ro.boot.warranty_bit", "0");
     InitPropertySet("ro.warranty_bit", "0");
     InitPropertySet("ro.debuggable", "0");
+    InitPropertySet("ro.force.debuggable", "0");
+    InitPropertySet("ro.adb.secure", "1");
     InitPropertySet("ro.secure", "1");
     InitPropertySet("ro.bootimage.build.type", "user");
     InitPropertySet("ro.build.type", "user");
@@ -1517,6 +1519,7 @@ static void SetSafetyNetProps() {
     InitPropertySet("vendor.boot.verifiedbootstate", "green");
     InitPropertySet("oplusboot.verifiedbootstate", "green");
     InitPropertySet("ro.crypto.state", "encrypted");
+    InitPropertySet("sys.oem_unlock_allowed", "0");
 }
 
 void PropertyInit() {
